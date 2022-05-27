@@ -1,0 +1,74 @@
+{
+  "title": "CSV",
+  "description": "A comma-separated values (CSV) file stores tabular data (numbers and text) in plain-text form",
+  "buildType": "docker",
+  "version": "1.0.0",
+  "actions": {
+    "read_action": {
+      "main": "./dist/actions/read.js",
+      "title": "Read CSV attachment",
+      "help": {
+        "description": "This action will read the CSV attachment of the incoming message or from the specified URL and output a JSON object."
+      },
+      "fields": {
+        "emitAll": {
+          "label": "Emit Behavior",
+          "required": true
+        },
+        "headers": {
+          "label": "if true, the first row of parsed data will be interpreted as field names, false by default."
+        },
+        "delimiter": {
+          "label": "The delimiting character. Defaults to ','"
+        },
+        "dynamicTyping": {
+          "label": "numeric, date and boolean data will be converted to their type instead of remaining strings, false by default."
+        }
+      }
+    },
+    "write_from_stream": {
+      "main": "./dist/actions/writeStream.js",
+      "title": "Create CSV From Message Stream",
+      "help": {
+        "description": "Multiple incoming events can be combined into one CSV file with the write CSV action."
+      },
+      "fields": {
+        "uploadToAttachment": {
+          "label": "Upload CSV as file to attachments",
+          "description": "If checked store the generated CSV data as an attachment"
+        },
+        "separator": {
+          "required": false,
+          "label": "Separator",
+          "note": "A single char used to delimit the CSV file. Default to ','"
+        },
+        "order": {
+          "required": false,
+          "note": "A string delimited with the separator (use same as above) indicating which columns & in what order the columns should appear in the resulting file. If omitted, the column order in the resulting file will not be deterministic."
+        }
+      }
+    },
+    "write_attachment_from_array": {
+      "main": "./dist/actions/writeArray.js",
+      "title": "Create CSV From JSON Array",
+      "help": {
+        "description": "Incoming array can be converted into one CSV file"
+      },
+      "fields": {
+        "uploadToAttachment": {
+          "label": "Upload CSV as file to attachments",
+          "description": "If checked store the generated CSV data as an attachment"
+        },
+        "separator": {
+          "required": false,
+          "label": "Separator",
+          "note": "A single char used to delimit the CSV file. Default to ','"
+        },
+        "order": {
+          "required": false,
+          "note": "A string delimited with the separator (use same as above) indicating which columns & in what order the columns should appear in the resulting file. If omitted, the column order in the resulting file will not be deterministic."
+        }
+      }
+    }
+  }
+}
