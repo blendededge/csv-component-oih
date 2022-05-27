@@ -4,14 +4,15 @@
   "scripts": {
     "pretest": "eslint lib/ spec --fix",
     "test": "nyc mocha spec",
-    "integration-test": "mocha spec-integration"
+    "integration-test": "mocha spec-integration",
+    "compile": "eslint . --ext .ts && tsc"
   },
   "engines": {
     "node": "14"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/elasticio/csv-component.git"
+    "url": "git+https://github.com/elasticio/csv-component-oih.git"
   },
   "keywords": [
     "csv",
