@@ -1,5 +1,6 @@
-import { Wrapped } from "@blendededge/ferryman-extensions";
+import { Wrapped } from '@blendededge/ferryman-extensions';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type GenericObject = Record<string, any>;
 
 export interface Message {
@@ -25,8 +26,10 @@ export interface WriteConfig {
     order?: string;
 }
 
+type Emit = (type: string, data?: GenericObject | string) => void
+
 export interface CSVWrapped extends Wrapped {
-    emit: Function;
+    emit: Emit;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
