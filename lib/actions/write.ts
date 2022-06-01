@@ -96,7 +96,7 @@ const uploadAttachment = async (emitter: Self, token: string, csvString: string,
     } else {
         attachmentProcessor = new AttachmentProcessor(emitter, token);
     }
-    
+
     let attachment;
     try {
         attachment = await attachmentProcessor.uploadAttachment(csvString, 'text/csv') as AxiosResponse;
