@@ -45,6 +45,10 @@
         "order": {
           "required": false,
           "note": "A string delimited with the separator (use same as above) indicating which columns & in what order the columns should appear in the resulting file. If omitted, the column order in the resulting file will not be deterministic."
+        },
+        "filenameJsonata": {
+          "required": false,
+          "note": "A JSONata expression to create a file name. Defaults to data.csv"
         }
       }
     },
@@ -67,6 +71,10 @@
         "order": {
           "required": false,
           "note": "A string delimited with the separator (use same as above) indicating which columns & in what order the columns should appear in the resulting file. If omitted, the column order in the resulting file will not be deterministic."
+        },
+        "filenameJsonata": {
+          "required": false,
+          "note": "A JSONata expression to create a file name. Defaults to data.csv"
         }
       }
     }
