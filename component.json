@@ -23,6 +23,9 @@
         },
         "dynamicTyping": {
           "label": "numeric, date and boolean data will be converted to their type instead of remaining strings, false by default."
+        },
+        "attachmentStorageServiceUrl": {
+          "label": "URL of attachment storage service. Defaults to what is provided by component orchestrator"
         }
       }
     },
@@ -49,6 +52,9 @@
         "filenameJsonata": {
           "required": false,
           "note": "A JSONata expression to create a file name. Defaults to data.csv"
+        },
+        "attachmentStorageServiceUrl": {
+          "label": "URL of attachment storage service. Defaults to what is provided by component orchestrator"
         }
       }
     },
@@ -75,6 +81,9 @@
         "filenameJsonata": {
           "required": false,
           "note": "A JSONata expression to create a file name. Defaults to data.csv"
+        },
+        "attachmentStorageServiceUrl": {
+          "label": "URL of attachment storage service. Defaults to what is provided by component orchestrator"
         }
       }
     }
