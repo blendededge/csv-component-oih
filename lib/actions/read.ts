@@ -16,7 +16,12 @@ async function readCSV(this: Self, msg: Message, cfg: Config, snapshot: Snapshot
 
     const { attachments, data } = newMsg;
 
-    const attachmentProcessor = new AttachmentProcessor(emitter, TOKEN);
+    let attachmentProcessor;
+    if (cfg.attachmentStorageServiceUrl) {
+        attachmentProcessor = new AttachmentProcessor(emitter, TOKEN, cfg.attachmentStorageServiceUrl);
+    } else {
+        attachmentProcessor = new AttachmentProcessor(emitter, TOKEN);
+    }
     const attachment = attachments[(data.filename as string)] as GenericObject;
 
     if (!attachment || !attachment.url || attachment.url.length < 1) {
