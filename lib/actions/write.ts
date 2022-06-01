@@ -51,7 +51,7 @@ async function proceedData({ data, cfg, msg, emitter, token }: ProceedData): Pro
         return;
     }
 
-    const attachment = await uploadAttachment(emitter, token, csvString);
+    const attachment = await uploadAttachment(emitter, token, csvString, cfg.attachmentStorageServiceUrl);
     if (!attachment) {
         await errorHelper(emitter, 'No response from uploading attachment');
         return;
@@ -89,8 +89,14 @@ const createCSVString = (cfg: Config, data: Array<any>): string => {
     return csvString;
 }
 
-const uploadAttachment = async (emitter: Self, token: string, csvString: string): Promise<AxiosResponse> => {
-    const attachmentProcessor = new AttachmentProcessor(emitter, token);
+const uploadAttachment = async (emitter: Self, token: string, csvString: string, attachmentServiceUrl?: string): Promise<AxiosResponse> => {
+    let attachmentProcessor;
+    if (attachmentServiceUrl) {
+        attachmentProcessor = new AttachmentProcessor(emitter, token, attachmentServiceUrl);
+    } else {
+        attachmentProcessor = new AttachmentProcessor(emitter, token);
+    }
+    
     let attachment;
     try {
         attachment = await attachmentProcessor.uploadAttachment(csvString, 'text/csv') as AxiosResponse;
