@@ -1,28 +1,29 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Config, Message } from '@blendededge/ferryman-extensions/lib/ferryman-types';
+
 export type GenericObject = Record<string, any>;
-
-export interface Message {
-    id: string,
-    attachments: GenericObject,
-    data: GenericObject,
-    headers: GenericObject,
-    metadata: GenericObject,
-    body?: GenericObject
+export interface ProceedData {
+    data: Array<any>;
+    cfg: Config;
+    msg: Message;
+    emitter: Self;
+    token: string;
 }
 
-export interface ReadConfig {
-    emitAll?: boolean | string;
-    header?: boolean;
-    delimiter?: string;
-    dynamicTyping?: boolean;
-    attachmentServiceUrl?: string;
+export interface WriteCSV {
+    cfg: Config;
+    msg: Message;
+    emitter: Self;
+    token: string;
 }
 
-export interface WriteConfig {
-    uploadToAttachment?: boolean;
-    separator?: string;
-    order?: string;
+export interface ProcessedConfig {
+    header: boolean;
+    emitAll: boolean;
+    delimiter: string;
+    dynamicTyping: boolean;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type AxiosResponse = any;
+
 export type Self = any;
