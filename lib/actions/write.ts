@@ -42,7 +42,7 @@ export async function writeCSV({ msg, cfg, emitter, token }: WriteCSV) {
 }
 
 async function proceedData({ data, cfg, msg, emitter, token }: ProceedData): Promise<void> {
-    const fileName = cfg.filenameJsonata ? transform(msg, { expression: cfg.filenameJsonata }) : 'data.csv';
+    const fileName = cfg.filenameJsonata ? transform(msg, { customMapping: cfg.filenameJsonata }) : 'data.csv';
     const csvString = createCSVString(cfg, data);
 
     if (!cfg.uploadToAttachment) {
