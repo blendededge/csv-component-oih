@@ -131,6 +131,7 @@ const sendAttachment = async (attachment: GenericObject, csvString: string, file
     await emitter.emit('data', respData);
     emitter.logger.info(`Complete, memory used: ${process.memoryUsage().heapUsed / 1024 / 1024} Mb`);
     emitter.logger.info('Attachment created successfully');
+    emitter.emit('end');
 }
 
 module.exports.process = writeCSV
