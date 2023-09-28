@@ -4,14 +4,14 @@ import * as stream from 'stream';
 import * as util from 'util';
 import * as papa from 'papaparse';
 import { booleanCheck, errorHelper, formatMessage } from '../util';
-import { Snapshot, Message, Config, IncomingHeaders } from '@blendededge/ferryman-extensions/lib/ferryman-types';
+import { Snapshot, Message, Config, IncomingHeaders, TokenData } from '@blendededge/ferryman-extensions/lib/ferryman-types';
 import { CsvWriter } from '../csvWriter';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { AttachmentProcessor } = require('@blendededge/ferryman-extensions');
 
-async function readCSV(this: Self, msg: Message, cfg: Config, snapshot: Snapshot, headers: IncomingHeaders, tokenData: GenericObject) {
+async function readCSV(this: Self, msg: Message, cfg: Config, snapshot: Snapshot, headers: IncomingHeaders, tokenData: TokenData) {
     const newMsg = formatMessage(msg);
-    const emitter = wrapper(this, newMsg, cfg);
+    const emitter = await wrapper(this, newMsg, cfg, snapshot, headers, tokenData);
     const TOKEN = cfg.token || tokenData.apiKey;
 
     const { attachments, data } = newMsg;
