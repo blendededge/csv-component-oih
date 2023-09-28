@@ -1,12 +1,12 @@
 import { wrapper } from '@blendededge/ferryman-extensions';
-import { GenericObject, Self } from '../types/global';
+import { Self } from '../types/global';
 import { errorHelper, formatMessage } from '../util';
 import { writeCSV } from './write';
-import { Snapshot, Message, Config, IncomingHeaders } from '@blendededge/ferryman-extensions/lib/ferryman-types';
+import { Snapshot, Message, Config, IncomingHeaders, TokenData } from '@blendededge/ferryman-extensions/lib/ferryman-types';
 
-async function writeArray(this: Self, msg: Message, cfg: Config, snapshot: Snapshot, headers: IncomingHeaders, tokenData: GenericObject) {
+async function writeArray(this: Self, msg: Message, cfg: Config, snapshot: Snapshot, headers: IncomingHeaders, tokenData: TokenData) {
     const newMsg = formatMessage(msg);
-    const emitter = wrapper(this, newMsg, cfg);
+    const emitter = await wrapper(this, newMsg, cfg, snapshot, headers, tokenData);
     const token = cfg.token ? cfg.token : tokenData?.apiKey;
 
     const { data } = newMsg;
