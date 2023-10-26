@@ -36,7 +36,10 @@ export async function writeCSV({ msg, cfg, emitter, token }: WriteCSV) {
     const TIMEOUT = typeof TIMEOUT_BETWEEN_EVENTS !== 'number' ? parseInt(TIMEOUT_BETWEEN_EVENTS) : TIMEOUT_BETWEEN_EVENTS;
     timeout = setTimeout(() => {
         emitter.logger.info(`input metadata is object. Array creation (wait up to ${TIMEOUT}ms for more records)`);
-        proceedData({ data: rawData, cfg, msg, emitter, token });
+        proceedData({ data: rawData, cfg, msg, emitter, token }).catch(err => {
+            emitter.emit('error', err);
+            emitter.logger.error(`Error writing data: ${err}`);
+        });
     }, TIMEOUT);
     return;
 }

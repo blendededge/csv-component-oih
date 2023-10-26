@@ -10,35 +10,46 @@ import { CsvWriter } from '../csvWriter';
 const { AttachmentProcessor } = require('@blendededge/ferryman-extensions');
 
 async function readCSV(this: Self, msg: Message, cfg: Config, snapshot: Snapshot, headers: IncomingHeaders, tokenData: TokenData) {
-    const newMsg = formatMessage(msg);
-    const emitter = await wrapper(this, newMsg, cfg, snapshot, headers, tokenData);
-    const TOKEN = cfg.token || tokenData.apiKey;
+    let emitter;
+    try {
+        const newMsg = formatMessage(msg);
+        emitter = await wrapper(this, newMsg, cfg, snapshot, headers, tokenData);
+        const TOKEN = cfg.token || tokenData.apiKey;
 
-    const { attachments, data } = newMsg;
+        const { attachments, data } = newMsg;
 
-    let attachmentProcessor;
-    if (cfg.attachmentStorageServiceUrl) {
-        attachmentProcessor = new AttachmentProcessor(emitter, TOKEN, cfg.attachmentStorageServiceUrl);
-    } else {
-        attachmentProcessor = new AttachmentProcessor(emitter, TOKEN);
-    }
-    const attachment = attachments[(data.filename as string)] as GenericObject;
+        let attachmentProcessor;
+        if (cfg.attachmentStorageServiceUrl) {
+            attachmentProcessor = new AttachmentProcessor(emitter, TOKEN, cfg.attachmentStorageServiceUrl);
+        } else {
+            attachmentProcessor = new AttachmentProcessor(emitter, TOKEN);
+        }
+        const attachment = attachments[(data.filename as string)] as GenericObject;
 
-    if (!attachment || !attachment.url || attachment.url.length < 1) {
-        await errorHelper(emitter, 'URL of the CSV is missing');
-        return;
-    }
-    emitter.logger.info('URL found');
+        if (!attachment || !attachment.url || attachment.url.length < 1) {
+            await errorHelper(emitter, 'URL of the CSV is missing');
+            return;
+        }
+        emitter.logger.info('URL found');
 
-    const attachmentResponse = await getAttachment(attachmentProcessor, attachment, emitter);
-    if (!attachmentResponse) {
+        const attachmentResponse = await getAttachment(attachmentProcessor, attachment, emitter);
+        if (!attachmentResponse) {
+            emitter.emit('end');
+            return;
+        }
+
+        await parseData(cfg, data, emitter, attachmentResponse);
         emitter.emit('end');
         return;
+    } catch (err) {
+        if (emitter) {
+            emitter.emit('error', err);
+            emitter.logger.error(`Error during processing: ${err}`);
+        } else {
+            this.emit('error', err);
+            this.logger.error(`Error during processing: ${err}`);
+        }
     }
-
-    await parseData(cfg, data, emitter, attachmentResponse);
-    emitter.emit('end');
-    return;
 }
 
 const processCfg = async (cfg: Config, data: Config, emitter: Self): Promise<ProcessedConfig | boolean> => {

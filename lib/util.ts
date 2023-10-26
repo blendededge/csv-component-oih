@@ -30,5 +30,4 @@ export const booleanCheck = (value: unknown) => {
 export const errorHelper = async (self: Self, message: string): Promise<void> => {
   await self.logger.error(message);
   await self.emit('error', message);
-  await self.emit('end');
 }
