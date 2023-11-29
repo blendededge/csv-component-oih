@@ -10,7 +10,8 @@
       "target": "es2017",
       "composite": true,
       "esModuleInterop": true,
-      "types": []
+      "types": ["node"],
+      "forceConsistentCasingInFileNames": true
     },
     "include": [
       "lib/**/*"

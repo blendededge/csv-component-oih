@@ -134,4 +134,10 @@ const processPipeline = async (parseOptions: GenericObject, emitAll: boolean, em
     }
 }
 
-module.exports.process = readCSV
+export = {
+    process: readCSV,
+    processCfg,
+    getAttachment,
+    parseData,
+    processPipeline,
+};
