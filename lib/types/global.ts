@@ -27,3 +27,5 @@ export interface ProcessedConfig {
 export type AxiosResponse = any;
 
 export type Self = any;
+
+export { Config };
