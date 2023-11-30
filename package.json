@@ -2,6 +2,7 @@
   "name": "csv-component-oih",
   "description": "Blended Edge CSV Component",
   "scripts": {
+    "pretest": "eslint lib/ --fix && tsc",
     "test": "nyc mocha spec/**/*.spec.mjs",
     "integration-test": "mocha spec-integration",
     "compile": "eslint . --ext .ts && tsc"
