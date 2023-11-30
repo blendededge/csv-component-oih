@@ -1,0 +1,19 @@
+"cust_id","cust_name","cust_addr2","cust_addr3","cust_addr4","cust_city","cust_state","cust_zip","tax_group","inv_cust_id","active","csc_d_upd"
+"15483","Geoge Profleet - Lost Mountain","Give all invoices to your Admin","","","Bison","NY","55555","RESALE ALL STATES","34233","Y",11/28/2023 12:35:05 PM
+"32910","Alex - Blue Ocean Co","309 Main St","733 Main St","750 Main St","New York","TX","31961","NON-RESALE","30355","N",05/09/2023 12:00:00 AM
+"43372","John - Redfield Ltd","269 2nd St","723 Main St","730 Oak Rd","Los Angeles","NY","27410","NON-RESALE","54845","Y",08/31/2023 12:00:00 AM
+"14827","Mike - Blue Ocean Group","593 Main St","617 Main St","696 Cedar Ln","Houston","AZ","14953","NON-RESALE","69467","Y",08/11/2023 12:00:00 AM
+"58979","Jane - Golden Sun Group","416 Main St","397 Main St","429 Main St","New York","TX","46739","RESALE ALL STATES","96718","Y",05/07/2023 12:00:00 AM
+"80847","Mike - Greenwave Ltd","885 2nd St","843 Main St","681 2nd St","Houston","CA","95056","STANDARD","94660","Y",06/01/2023 12:00:00 AM
+"69287","Mike - Golden Sun Inc","562 2nd St","892 Park Ave","440 Main St","Chicago","TX","76492","STANDARD","96529","N",02/21/2023 12:00:00 AM
+"71399","Mike - Redfield Inc","979 Cedar Ln","751 Oak Rd","470 Cedar Ln","Phoenix","CA","84132","RESALE ALL STATES","13852","Y",07/31/2023 12:00:00 AM
+"60859","Mike - Greenwave Inc","418 Main St","911 Cedar Ln","555 Cedar Ln","Chicago","NY","38711","EXEMPT","39115","N",07/15/2023 12:00:00 AM
+"28897","Emma - Greenwave Ltd","250 Main St","193 Main St","718 2nd St","Phoenix","CA","85954","STANDARD","52298","N",09/06/2023 12:00:00 AM
+"60943","Alex - Blue Ocean Inc","352 Park Ave","436 Oak Rd","454 2nd St","Phoenix","TX","53875","RESALE ALL STATES","97122","N",05/13/2023 12:00:00 AM
+"59330","Mike - Purple Cloud Co","226 Park Ave","504 Oak Rd","982 Cedar Ln","Los Angeles","TX","66773","NON-RESALE","71925","Y",06/18/2023 12:00:00 AM
+"64456","Jane - Blue Ocean Ltd","189 2nd St","343 Cedar Ln","503 Park Ave","New York","NY","35829","EXEMPT","16897","Y",11/27/2023 12:00:00 AM
+"58896","Mike - Blue Ocean Ltd","669 Park Ave","140 Main St","673 2nd St","Phoenix","AZ","84636","STANDARD","42640","Y",11/05/2023 12:00:00 AM
+"83483","Alex - Blue Ocean Group","177 2nd St","425 Oak Rd","217 2nd St","Houston","AZ","83331","NON-RESALE","21658","N",04/03/2023 12:00:00 AM
+"26441","Jane - Redfield Inc","585 Cedar Ln","","","Chicago","CA","47253","EXEMPT","98744","Y",11/18/2023 12:00:00 AM
+"46833","Alex - Golden Sun Ltd","974 2nd St","","","New York","IL","17695","STANDARD","86269","Y",11/16/2023 12:00:00 AM
+"71516","Alex - Blue Ocean LLC","467 Oak Rd","634 Main St","432 Main St","Houston","CA","76464","RESALE ALL STATES","42808","N",02/28/2023 12:00:00 AM
