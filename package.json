@@ -8,7 +8,7 @@
     "compile": "eslint . --ext .ts && tsc"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "repository": {
     "type": "git",
